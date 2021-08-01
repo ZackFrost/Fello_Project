@@ -41,7 +41,7 @@ class _NewsPageState extends State<NewsPage> {
         _newsList.addAll(_response.articles!);
       }
     } else {
-      CommonUtils.showSnackBar(context, "Something Went Wrong : ${_response.status}");
+      CommonUtils.showSnackBar(context, "${_response.status}");
     }
 
     if (mounted)
@@ -62,16 +62,19 @@ class _NewsPageState extends State<NewsPage> {
   }
 
   Widget _getNoDataWidget() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image(image: AssetImage("assets/no_data.png"), width: 140),
-        Padding(
-          padding: const EdgeInsets.only(top: 14.0),
-          child: Text("No headlines to show"),
-        )
-      ],
+    return Align(
+      alignment: Alignment.center,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image(image: AssetImage("assets/no_data.png"), width: 140),
+          Padding(
+            padding: const EdgeInsets.only(top: 14.0),
+            child: Text("No headlines to show"),
+          )
+        ],
+      ),
     );
   }
 
